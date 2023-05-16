@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "3b058f2e-328e-47bf-80de-5e598503743a",
+		"name": "Fruits",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21008020",
+		"_collection_link": "https://smeshubid.postman.co/workspace/Smeshub~b20c3c83-85cd-4bff-8ac8-0018cb568d97/collection/21008020-3b058f2e-328e-47bf-80de-5e598503743a?action=share&creator=21008020&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "POST - Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "fullName",
+							"value": "Joko",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "joko@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Password1$",
+							"type": "text"
+						},
+						{
+							"key": "phoneNumber",
+							"value": "081212341231",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "jl. Jagakarsa, no. 157, jakarta selata, DKI Jakarta",
+							"type": "text"
+						},
+						{
+							"key": "role_id",
+							"value": "6462c6a2658ebe8a27247af1",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "user_joko",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin_bambang",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Password1$",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Create New Role",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjMyZGJmZjhkYmIzMDVhNDNiMTNiYSIsImZ1bGxOYW1lIjoiSm9rbyIsInVzZXJuYW1lIjoidXNlcl9qb2tvIiwiZW1haWwiOiJqb2tvQG1haWwuY29tIiwicm9sZSI6IlVzZXIiLCJpYXQiOjE2ODQyMjE2OTAsImV4cCI6MTY4NDMwODA5MH0.lXK4iRZp5Z21zj15bZ_2qCKDzOsic8p_MAmctbWOHKQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Baru",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/roles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Get all Fruits",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjMyZGJmZjhkYmIzMDVhNDNiMTNiYSIsImZ1bGxOYW1lIjoiSm9rbyIsInVzZXJuYW1lIjoidXNlcl9qb2tvIiwiZW1haWwiOiJqb2tvQG1haWwuY29tIiwicm9sZSI6IlVzZXIiLCJpYXQiOjE2ODQyMjE2OTAsImV4cCI6MTY4NDMwODA5MH0.lXK4iRZp5Z21zj15bZ_2qCKDzOsic8p_MAmctbWOHKQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/fruits/64633307707032289dd23213",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"fruits",
+						"64633307707032289dd23213"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Create new Fruit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjMyZGJmZjhkYmIzMDVhNDNiMTNiYSIsImZ1bGxOYW1lIjoiSm9rbyIsInVzZXJuYW1lIjoidXNlcl9qb2tvIiwiZW1haWwiOiJqb2tvQG1haWwuY29tIiwicm9sZSI6IlVzZXIiLCJpYXQiOjE2ODQyMjI4MTYsImV4cCI6MTY4NDMwOTIxNn0.FL93AYwaQFIO3nYjP1Ao3G-EciRq6DC3f6QhkIxKVqY",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Corn\",\n    \"family_id\": \"646270416803ce24db88631f\",\n    \"genus_id\": \"646270c26803ce24db886322\",\n    \"nutritions\": {\n        \"calories\":29,\n        \"fat\":0.4,\n        \"sugar\":5.4,\n        \"carbohydrates\":5.5,\n        \"protein\":0.8\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/fruits",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"fruits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Update Fruit",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjMyZDY0ZjhkYmIzMDVhNDNiMTNiNyIsImZ1bGxOYW1lIjoiQmFtYmFuZyIsInVzZXJuYW1lIjoiYWRtaW5fYmFtYmFuZyIsImVtYWlsIjoiYmFtYmFuZ0BtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY4NDIyNjA0MywiZXhwIjoxNjg0MzEyNDQzfQ.SaHWVnDRY4pP2b-UDgWg6pWrar4DQbZTvpnq2b3WRvg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Corn\",\n    \"family_id\": \"646270416803ce24db88631f\",\n    \"genus_id\": \"646270c26803ce24db886322\",\n    \"nutritions\": {\n        \"calories\":30,\n        \"fat\":0.12,\n        \"sugar\":9.85,\n        \"carbohydrates\":0.54,\n        \"protein\":0.8\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/fruits/64633307707032289dd23213",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"fruits",
+						"64633307707032289dd23213"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE - Delete Fruit",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjMyZDY0ZjhkYmIzMDVhNDNiMTNiNyIsImZ1bGxOYW1lIjoiQmFtYmFuZyIsInVzZXJuYW1lIjoiYWRtaW5fYmFtYmFuZyIsImVtYWlsIjoiYmFtYmFuZ0BtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY4NDIyNjA0MywiZXhwIjoxNjg0MzEyNDQzfQ.SaHWVnDRY4pP2b-UDgWg6pWrar4DQbZTvpnq2b3WRvg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/fruits/64633307707032289dd23213",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"fruits",
+						"64633307707032289dd23213"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
