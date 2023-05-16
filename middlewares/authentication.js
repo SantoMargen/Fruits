@@ -25,4 +25,20 @@ const authentication = async (req, res, next) => {
     }
 };
 
-module.exports = { authentication };
+const authorization = async (req, res, next) => {
+    try {
+        const { role } = req.user
+        if (role !== "Admin") {
+            throw { name: "AUTHORIZATION" };
+        }
+
+        next();
+    } catch (err) {
+        next(err);
+    }
+}
+
+module.exports = {
+    authentication,
+    authorization
+};
