@@ -10,6 +10,6 @@ const familySchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-const Family = mongoose.model('famillies', familySchema);
+const Family = mongoose.model('families', familySchema);
 
 module.exports = Family;

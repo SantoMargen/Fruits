@@ -11,9 +11,10 @@ const { genereateToken } = require("../helpers/jwt");
 class UserController {
     static async ragisterUser(req, res, next) {
         try {
-            const { fullName, email, password, phoneNumber, address } = req.body;
+            const { fullName, username, email, password, phoneNumber, address } = req.body;
             const payload = {
                 fullName,
+                username,
                 email,
                 password,
                 phoneNumber,
@@ -23,15 +24,10 @@ class UserController {
 
             const data = await User.create(payload);
             let response = {
-                statusDesc: "success",
                 statusCode: 201,
-                response: {
-                    _id: data._id,
-                    fullNmae: data.fullName,
-                    email: data.email,
-                    phoneumber: data.phoneNumber,
-                    address: data.address
-                }
+                statusDesc: "success",
+                success: true,
+                response: { data }
             }
             res.status(201).json(response);
         } catch (err) {
@@ -41,12 +37,12 @@ class UserController {
 
     static async loginUser(req, res, next) {
         try {
-            const { email, password } = req.body;
-            if (!email || !password) {
+            const { username, password } = req.body;
+            if (!username || !password) {
                 throw { name: "EMPTY_DATA" };
             }
 
-            const foundUser = await User.findOne({ email: email }).populate('role_id', 'title');
+            const foundUser = await User.findOne({ username: username }).populate('role_id', 'title');
 
             if (!foundUser || !comparePassword(password, foundUser.password)) {
                 throw { name: "USER_NOT_FOUND" };
@@ -55,12 +51,19 @@ class UserController {
             const payload = {
                 id: foundUser._id,
                 fullName: foundUser.fullName,
+                username: username,
                 email: foundUser.email,
                 role: foundUser.role_id.title
             };
 
             const token = genereateToken(payload);
-            res.status(200).json({ id: foundUser.id, fullName: foundUser.fullName, access_token: token });
+            res.status(200).json(
+                {
+                    id: foundUser.id,
+                    fullName: foundUser.fullName,
+                    username: foundUser.username,
+                    access_token: token
+                });
         } catch (err) {
             next(err);
         }
@@ -87,6 +90,29 @@ class UserController {
             const fruits = await Fruit.find({}).populate('family_id', '-_id').populate('genus_id', '-_id ')
 
             res.status(200).json(fruits);
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async CreateFruits(req, res, next) {
+        try {
+            const { name, family_id, genus_id, nutritions } = req.body;
+            const payload = {
+                name,
+                family_id,
+                genus_id,
+                nutritions
+            }
+
+            const data = await Fruit.create(payload);
+            let response = {
+                statusCode: 201,
+                statusDesc: "success",
+                success: true,
+                response: { data }
+            }
+            res.status(201).json(response);
         } catch (err) {
             next(err)
         }
