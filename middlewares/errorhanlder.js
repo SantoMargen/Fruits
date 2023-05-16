@@ -4,7 +4,7 @@ const errorHandler = (err, req, res, next) => {
         statusDesc: "error",
         success: false
     }
-
+    console.log(err.name, "name");
     switch (err.name) {
         case "ValidationError":
             error.message = err.message
@@ -15,6 +15,11 @@ const errorHandler = (err, req, res, next) => {
             error.message = "wrong username/password"
             error.errorCode = 401
             res.status(401).json(error);
+            break;
+        case "ERROR_UPDATE":
+            error.message = "Conflict"
+            error.errorCode = 409
+            res.status(409).json(error);
             break;
         case "AUTHORIZATION":
             error.message = "Forbidden"

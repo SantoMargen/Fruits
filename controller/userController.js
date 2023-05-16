@@ -95,7 +95,7 @@ class UserController {
         }
     }
 
-    static async CreateFruits(req, res, next) {
+    static async createFruits(req, res, next) {
         try {
             const { name, family_id, genus_id, nutritions } = req.body;
             const payload = {
@@ -112,6 +112,50 @@ class UserController {
                 success: true,
                 response: { data }
             }
+            res.status(201).json(response);
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async updateFruit(req, res, next) {
+        try {
+            const { fruitId } = req.params
+            const fruit = await Fruit.findById(fruitId)
+
+            fruit.name = req.body.name ? req.body.name : fruit.name;
+            fruit.family_id = req.body.family_id ? req.body.family_id : fruit.family_id;
+            fruit.genus_id = req.body.genus_id ? req.body.genus_id : fruit.genus_id;
+            fruit.nutritions = req.body.nutritions ? req.body.nutritions : fruit.nutritions;
+
+            await Fruit.findByIdAndUpdate({ _id: fruitId },
+                { $set: { name: fruit.name, family_id: fruit.family_id, genus_id: fruit.genus_id, nutritions: fruit.nutritions } },
+                { new: true })
+
+            let response = {
+                statusCode: 200,
+                statusDesc: "success",
+                success: true,
+                response: { message: "Fruit has been updated" }
+            }
+            res.status(201).json(response);
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async deleteFruit(req, res, next) {
+        try {
+            const { fruitId } = req.params
+            await Fruit.findByIdAndDelete(fruitId)
+
+            let response = {
+                statusCode: 200,
+                statusDesc: "success",
+                success: true,
+                response: { message: "Fruit has been deleted" }
+            }
+
             res.status(201).json(response);
         } catch (err) {
             next(err)

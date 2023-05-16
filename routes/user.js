@@ -5,8 +5,9 @@ const { authorization } = require('../middlewares/authentication')
 
 
 router.post('/roles', authorization, UserController.registerRoles)
-router.post('/fruits', authorization, UserController.CreateFruits)
-
+router.post('/fruits', authorization, UserController.createFruits)
+router.put('/fruits/:fruitId', authorization, UserController.updateFruit)
+router.delete('/fruits/:fruitId', authorization, UserController.deleteFruit)
 router.get('/fruits', UserController.getFruits)
 
 
