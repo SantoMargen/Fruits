@@ -12,7 +12,7 @@ const fruitSchema = new mongoose.Schema(
         },
         family_id: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'famillies',
+            ref: 'families',
             required: true
         },
         genus_id: {

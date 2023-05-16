@@ -13,6 +13,11 @@
 | admin_bambang | Password1$ | Admin |
 | user_joko     | Password1$ | User  |
 
+### List of Roles
+
+- Admin
+- User
+
 ## List API
 
 #### Login Admin/ User
