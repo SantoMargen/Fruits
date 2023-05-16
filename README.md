@@ -1,10 +1,11 @@
 # Fruits
 
-## How to Use
+### How to Use
 
-    1. clone repo https://github.com/SantoMargen/Fruits
-    2. run npm install
-    3. run npm start
+- clone repo https://github.com/SantoMargen/Fruits
+- run npm install
+- run npm start
+- it may take a long time to connect to mongoDB atlas, wait for it to connect to mongoDB atlas
 
 ## user
 
@@ -20,7 +21,7 @@
 
 ## List API
 
-#### Login Admin/ User
+### Login Admin/ User
 
 | Type   | Path                        | Description                |
 | :----- | :-------------------------- | :------------------------- |
